@@ -39,10 +39,9 @@ export const ResultsBox: React.FC<ResultsBoxProps> = ({
       ) : (
         <main
           className={classNames(
-            "h-[65vh]",
+            "h-[73vh]",
             "border",
             "border-white",
-            "mt-8",
             "overflow-x-auto",
             "fade-in",
             "rounded-xl"

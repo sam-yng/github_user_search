@@ -52,7 +52,7 @@ export const UserItem: React.FC<UserItemProps> = ({
         )}
       >
         <h1>{name}</h1>
-        <Link href={link}>
+        <Link target="blank" href={link}>
           <h1>{link}</h1>
         </Link>
         <button onClick={onClickSaveUser} className={classNames("w-6", "h-6")}>

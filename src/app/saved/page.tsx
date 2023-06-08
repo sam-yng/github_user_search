@@ -8,8 +8,9 @@ export default function Search() {
       <h1
         className={classNames("text-4xl", "tracking-wider", "fade-in", "mt-8")}
       >
-        Search for your saved users
+        View your saved users
       </h1>
+      <p className={classNames("mt-2", "fade-in")}>Click the tick to unsave</p>
       <Saved />
     </main>
   );
