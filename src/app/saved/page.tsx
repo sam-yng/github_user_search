@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import { Saved } from "@/components/Saved";
 
 export default function Search() {
   return (
@@ -9,6 +10,7 @@ export default function Search() {
       >
         Search for your saved users
       </h1>
+      <Saved />
     </main>
   );
 }

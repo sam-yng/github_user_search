@@ -2,12 +2,9 @@
 
 import React from "react";
 import classNames from "classnames";
-import { useHub } from "@/utils/HubContext";
 import { ResultsBox } from "./ResultsBox";
 
-export const Main: React.FC = () => {
-  const { updateInput, fetchData } = useHub();
-
+export const Saved: React.FC = () => {
   return (
     <>
       <main
@@ -20,7 +17,6 @@ export const Main: React.FC = () => {
         )}
       >
         <input
-          onChange={updateInput}
           className={classNames(
             "border",
             "border-white",
@@ -39,7 +35,6 @@ export const Main: React.FC = () => {
           )}
         ></input>
         <button
-          onClick={fetchData}
           className={classNames(
             "border",
             "border-white",
@@ -57,7 +52,7 @@ export const Main: React.FC = () => {
           Search
         </button>
       </main>
-      <ResultsBox activePage="search" />
+      <ResultsBox activePage="saved" />
     </>
   );
 };

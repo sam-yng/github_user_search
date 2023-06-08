@@ -2,6 +2,7 @@ import "../css/globals.css";
 import React from "react";
 import { NavBar } from "@/components/NavBar";
 import classNames from "classnames";
+import { HubProvider } from "@/utils/HubContext";
 
 export const metadata = {
   title: "Github User Search",
@@ -18,8 +19,10 @@ export default function RootLayout({
       <body
         className={classNames("bg-black", "px-64", "font-thin", "text-white")}
       >
-        <NavBar />
-        {children}
+        <HubProvider>
+          <NavBar />
+          {children}
+        </HubProvider>
       </body>
     </html>
   );
