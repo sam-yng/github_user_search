@@ -1,11 +1,12 @@
 /* eslint-disable indent */
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import flag from "../../public/assets/icons/flag.png";
 import check from "../../public/assets/icons/checkmark.png";
 import { useHub } from "@/utils/HubContext";
+import greenflag from "../../public/assets/icons/flag-green.png";
 
 type UserItemProps = {
   avatar?: string;
@@ -22,6 +23,10 @@ export const UserItem: React.FC<UserItemProps> = ({
   id,
 }: UserItemProps) => {
   const { setResult, result } = useHub();
+
+  const [isHovering, setIsHovered] = useState(false);
+  const onMouseEnter = () => setIsHovered(true);
+  const onMouseLeave = () => setIsHovered(false);
 
   const onClickSaveUser = useCallback(() => {
     setResult(
@@ -51,12 +56,30 @@ export const UserItem: React.FC<UserItemProps> = ({
           "justify-between"
         )}
       >
-        <h1>{name}</h1>
+        <h1
+          className={classNames("hover:text-green-500", "hover:cursor-pointer")}
+        >
+          {name}
+        </h1>
         <Link target="blank" href={link}>
-          <h1>{link}</h1>
+          <h1 className={classNames("hover:text-green-500")}>{link}</h1>
         </Link>
-        <button onClick={onClickSaveUser} className={classNames("w-6", "h-6")}>
-          <Image alt="icon" src={flagged === true ? check : flag} />
+        <button
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          onClick={onClickSaveUser}
+          className={classNames("w-6", "h-6")}
+        >
+          <Image
+            alt="icon"
+            src={
+              flagged === true
+                ? check
+                : flag && isHovering === true
+                ? greenflag
+                : flag
+            }
+          />
         </button>
       </article>
     </>
